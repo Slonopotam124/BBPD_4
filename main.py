@@ -68,11 +68,54 @@ class ArrayApp:
         for row in self.array:
             print(" ".join(f"{x:4d}" for x in row))
 
-    
+
+    # 4. Выполнение функций
+    def functions_menu(self):
+        if self.array is None:
+            print("Массив ещё не создан.")
+            return
+        while True:
+            print("\n--- Функции ---")
+            print("1. Сумма элементов каждой строки и столбца")
+            print("2. Поменять местами первый и последний столбец")
+            print("3. Сумма элементов на главной диагонали")
+            print("4. Заменить все элементы < суммы элементов первой строки на эту сумму")
+            print("5. Сумма положительных элементов в строках без нулей")
+            print("6. Назад")
+            choice = input("Выбор: ").strip()
+            if choice == "1":
+                self._func_1()
+            elif choice == "3":
+                self._func_3()
+            elif choice == "6":
+                return
+            else:
+                print("Неверный выбор.")
+                continue
+            input("\nНажмите Enter для возврата...")
+
+
+    def _func_1(self):
+        print("\nСуммы строк:")
+        for i, row in enumerate(self.array):
+            print(f"  Строка {i}: {sum(row)}")
+        print("Суммы столбцов:")
+        for j in range(self.cols):
+            col_sum = sum(self.array[i][j] for i in range(self.rows))
+            print(f"  Столбец {j}: {col_sum}")
+
+
+    def _func_3(self):
+        n = min(self.rows, self.cols)
+        diag_sum = sum(self.array[i][i] for i in range(n))
+        print(f"Сумма главной диагонали: {diag_sum}")
+
+
     def run(self):
         self.input_size()
         self.create_array()
         self.view_array()
+        self.functions_menu()
 
 
 if __name__ == "__main__":
