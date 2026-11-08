@@ -85,6 +85,8 @@ class ArrayApp:
             choice = input("Выбор: ").strip()
             if choice == "1":
                 self._func_1()
+            elif choice == "2":
+                self._func_2()
             elif choice == "3":
                 self._func_3()
             elif choice == "6":
@@ -111,6 +113,16 @@ class ArrayApp:
         print(f"Сумма главной диагонали: {diag_sum}")
 
 
+    def _func_2(self):
+        if self.cols < 2:
+            print("Нужно минимум 2 столбца для обмена.")
+            return
+        for i in range(self.rows):
+            self.array[i][0], self.array[i][-1] = self.array[i][-1], self.array[i][0]
+        print("Первый и последний столбцы поменяны местами.")
+        self.view_array()
+
+        
     def run(self):
         self.input_size()
         self.create_array()
