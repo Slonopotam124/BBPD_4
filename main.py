@@ -89,6 +89,8 @@ class ArrayApp:
                 self._func_2()
             elif choice == "3":
                 self._func_3()
+            elif choice == "4":
+                self._func_4()
             elif choice == "6":
                 return
             else:
@@ -122,7 +124,18 @@ class ArrayApp:
         print("Первый и последний столбцы поменяны местами.")
         self.view_array()
 
-        
+
+    def _func_4(self):
+        first_row_sum = sum(self.array[0])
+        print(f"Сумма первой строки: {first_row_sum}")
+        for i in range(self.rows):
+            for j in range(self.cols):
+                if self.array[i][j] < first_row_sum:
+                    self.array[i][j] = first_row_sum
+        print("Элементы, меньшие суммы первой строки, заменены.")
+        self.view_array()
+
+    
     def run(self):
         self.input_size()
         self.create_array()
