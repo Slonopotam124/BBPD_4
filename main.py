@@ -58,10 +58,21 @@ class ArrayApp:
         self.array = [[random.randint(0, 100) for _ in range(self.cols)] for _ in range(self.rows)]
         print("Массив создан автоматически.")
 
+    
+    # 3. Просмотр массива 
+    def view_array(self):
+        if self.array is None:
+            print("Массив ещё не создан.")
+            return
+        print("\n--- Текущий массив ---")
+        for row in self.array:
+            print(" ".join(f"{x:4d}" for x in row))
 
+    
     def run(self):
         self.input_size()
         self.create_array()
+        self.view_array()
 
 
 if __name__ == "__main__":
