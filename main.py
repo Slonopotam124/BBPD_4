@@ -91,6 +91,8 @@ class ArrayApp:
                 self._func_3()
             elif choice == "4":
                 self._func_4()
+            elif choice == "5":
+                self._func_5()
             elif choice == "6":
                 return
             else:
@@ -135,7 +137,20 @@ class ArrayApp:
         print("Элементы, меньшие суммы первой строки, заменены.")
         self.view_array()
 
-    
+
+    def _func_5(self):
+        total = 0
+        found = False
+        for i, row in enumerate(self.array):
+            if 0 not in row:
+                found = True
+                total += sum(x for x in row if x > 0)
+        if found:
+            print(f"Сумма положительных элементов в строках без нулей: {total}")
+        else:
+            print("Все строки содержат нули (или подходящих нет). Результат: 0")
+
+
     def run(self):
         self.input_size()
         self.create_array()
