@@ -151,11 +151,29 @@ class ArrayApp:
             print("Все строки содержат нули (или подходящих нет). Результат: 0")
 
 
+    # 5. Главное меню и выход
     def run(self):
-        self.input_size()
-        self.create_array()
-        self.view_array()
-        self.functions_menu()
+        while True:
+            print("\n========== ГЛАВНОЕ МЕНЮ ==========")
+            print("a. Ввод размера массива")
+            print("b. Создание массива")
+            print("c. Просмотр массива")
+            print("d. Выполнение функций")
+            print("e. Выход")
+            choice = input("Выбор: ")
+            if choice == "a":
+                self.input_size()
+            elif choice == "b":
+                self.create_array()
+            elif choice == "c":
+                self.view_array()
+            elif choice == "d":
+                self.functions_menu()
+            elif choice == "e":
+                print("До свидания!")
+                break
+            else:
+                print("Неверный выбор.")
 
 
 if __name__ == "__main__":
